@@ -27,7 +27,7 @@ require_once plugin_dir_path( __FILE__ ) . 'vendor/autoload.php';
 /**
  * Currently plugin version.
  */
-define( 'PLUGIN_NAME_VERSION', '1.0.0' );
+define( 'BHAA_EE_PLUGIN_VERSION', '1.0.0' );
 /**
  * The code that runs during plugin activation.
  */
@@ -40,8 +40,8 @@ function activate_plugin_name() {
 function deactivate_plugin_name() {
     utils\Deactivator::deactivate();
 }
-register_activation_hook( __FILE__, '\BHAA\activate_plugin_name' );
-register_deactivation_hook( __FILE__, '\BHAA\deactivate_plugin_name' );
+register_activation_hook( __FILE__, '\BHAA_EE\activate_plugin_name' );
+register_deactivation_hook( __FILE__, '\BHAA_EE\deactivate_plugin_name' );
 /**
  * Begins execution of the plugin.
  */
