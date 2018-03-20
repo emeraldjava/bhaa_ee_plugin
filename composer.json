@@ -1,0 +1,10 @@
+{
+  "name" : "emeraldjava/bhaa_ee_plugin",
+  "description" : "bhaa_ee_plugin",
+  "type" : "bhaa_ee_plugin-plugin",
+  "autoload" : {
+    "psr-4" : {
+      "BHAA_EE\\" : "src"
+    }
+  }
+}
