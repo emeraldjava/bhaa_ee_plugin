@@ -6,7 +6,7 @@
  * Plugin Name:       bhaa_ee_plugin
  * Plugin URI:        https://github.com/emeraldjava/bhaa_ee_plugin
  * Description:       A plugin to handle event expresso customisations for the BHAA wordpress site.
- * Version:           2018.03.20
+ * Version:           2018.03.23
  * Author:            emeraldjava
  * Author URI:        https://github.com/emeraldjava
  * License:           GPL-2.0+

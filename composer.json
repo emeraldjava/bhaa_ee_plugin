@@ -6,5 +6,9 @@
     "psr-4" : {
       "BHAA_EE\\" : "src"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "BHAA_EE\\": "tests" }
   }
 }
