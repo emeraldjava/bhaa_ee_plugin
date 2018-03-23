@@ -9,4 +9,4 @@ before_install:
   - composer self-update
 
 script
-  - ./vendor/bin/phpunit --bootstrap vendor/autoload.php tests/MainTest
+  - ./phpunit

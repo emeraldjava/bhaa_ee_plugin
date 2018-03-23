@@ -5,11 +5,13 @@ use PHPUnit\Framework\TestCase;
 
 final class MainTest extends TestCase {
 
-    public function testCanBeCreatedFromValidEmailAddress(): void
-    {
-        $this->assertInstanceOf(
-            BHAA_EE\Main::class,'BHAA_EE\Main'
-        );
+    protected $obj = NULL;
+
+    protected function setUp() {
+        $this->obj = new BHAA_EE\Main;
     }
 
+    public function testCanBeCreatedFromValidEmailAddress(): void {
+        $this->assertEquals($this->obj->get_plugin_name(),'bhaa_ee_plugin');
+    }
 }

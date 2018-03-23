@@ -79,4 +79,12 @@ class Main {
             return;
         }
     }
+
+    public function get_plugin_name() {
+        return $this->plugin_name;
+    }
+
+    public function get_version() {
+        return $this->version;
+    }
 }
