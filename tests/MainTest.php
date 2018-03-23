@@ -11,7 +11,7 @@ final class MainTest extends TestCase {
         $this->obj = new BHAA_EE\Main;
     }
 
-    public function testCanBeCreatedFromValidEmailAddress(): void {
+    public function testVerifyPluginName(): void {
         $this->assertEquals($this->obj->get_plugin_name(),'bhaa_ee_plugin');
     }
 }
