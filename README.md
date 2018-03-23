@@ -1,5 +1,8 @@
 # bhaa_ee_plugin
+
 A plugin to handle event expresso customisations for the BHAA wordpress site.
+
+[![Build Status](https://travis-ci.org/emeraldjava/bhaa_ee_plugin.svg?branch=master)](https://travis-ci.org/emeraldjava/bhaa_ee_plugin)
 
 ## Resources
 
