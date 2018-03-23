@@ -34,6 +34,23 @@ class Main {
     public function run() {
         add_filter( 'admin_footer_text', 'bhaa_ee_remove_footer_text', 11 );
         add_action( 'pre_get_posts', 'bhaa_ee_add_espresso_events_to_posts', 10 );
+        add_filter(
+            'FHEE__EED_WP_Users_Ticket_Selector__maybe_restrict_ticket_option_by_cap__no_access_msg',
+            'bhaa_ee_member_no_access_message',
+            10,
+            4
+        );
+    }
+
+    /**
+     * Display a login message to BHAA members for restricted tickets.
+     * https://eventespresso.com/wiki/wp-user-integration/#ee4customizations
+     */
+    function bhaa_ee_member_no_access_message( $content, $tkt, $ticket_price, $tkt_status ) {
+        $url = wp_login_url( get_permalink() );
+        $content = $tkt->name() . ' becomes available if you log in to your account. ';
+        $content .= 'BHAA Members can <a href="'. $url .'" title="Log in">log in here</a>.';
+        return $content;
     }
 
     // https://eventespresso.com/wiki/useful-php-code-snippets/
