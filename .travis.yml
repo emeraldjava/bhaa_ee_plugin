@@ -13,6 +13,4 @@ script:
   - phpunit
 
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      ./deploy.sh ${FTP_USER} ${FTP_PASSWORD} ${FTP_SITE} ${FTP_PATH}
-    fi
+  - ./deploy.sh ${FTP_USER} ${FTP_PASSWORD} ${FTP_SITE} ${FTP_PATH}
