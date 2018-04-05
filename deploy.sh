@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 echo 'This is the deploy.script'
-echo $FPT_SITE
+echo 'FTP site '.${FPT_SITE}
