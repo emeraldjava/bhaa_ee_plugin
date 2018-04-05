@@ -16,5 +16,7 @@ curl --ftp-create-dirs -u "$1:$2" -T vendor/composer/autoload_namespaces.php ftp
 curl --ftp-create-dirs -u "$1:$2" -T vendor/composer/autoload_psr4.php       ftp://$3/$4/vendor/composer/autoload_psr4.php
 curl --ftp-create-dirs -u "$1:$2" -T vendor/composer/autoload_real.php       ftp://$3/$4/vendor/composer/autoload_real.php
 curl --ftp-create-dirs -u "$1:$2" -T vendor/composer/autoload_static.php     ftp://$3/$4/vendor/composer/autoload_static.php
+curl --ftp-create-dirs -u "$1:$2" -T vendor/composer/installed.json          ftp://$3/$4/vendor/composer/installed.json
+curl --ftp-create-dirs -u "$1:$2" -T vendor/composer/LICENSE                 ftp://$3/$4/vendor/composer/LICENSE
 curl --ftp-create-dirs -u "$1:$2" -T bhaa_ee_plugin.php                      ftp://$3/$4/bhaa_ee_plugin.php
 curl --list-only -u "$1:$2" ftp://$3/$4/
