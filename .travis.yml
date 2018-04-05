@@ -8,10 +8,9 @@ php:
 before_install:
   - composer self-update
   - composer install -n
-  - chmod +x deploy.sh
 
 script:
   - phpunit
 
 after_success:
-  - ./deploy.sh
+  - ./deploy.sh ${FTP_USER} ${FTP_PASSWORD} ${FTP_SITE} ${FTP_PATH}
