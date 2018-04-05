@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
-echo 'This is the deploy.script'
+
+if [[ "$TRAVIS_BRANCH" != "master" ]]; then
+  echo "We're not on the master branch."
+  # analyze current branch and react accordingly
+  exit 0
+fi
+
 echo 'FTP_USER     '$1
 echo 'FTP_PASSWORD '$2
 echo 'FTP_SITE     '$3
