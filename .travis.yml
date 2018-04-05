@@ -11,3 +11,6 @@ before_install:
 
 script:
   - phpunit
+
+after_success:
+  - ./deploy.sh

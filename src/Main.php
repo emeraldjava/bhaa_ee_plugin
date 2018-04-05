@@ -32,13 +32,11 @@ class Main {
     }
 
     public function run() {
-        add_filter( 'admin_footer_text', 'bhaa_ee_remove_footer_text', 11 );
-        add_action( 'pre_get_posts', 'bhaa_ee_add_espresso_events_to_posts', 10 );
+        add_filter( 'admin_footer_text', array($this,'bhaa_ee_remove_footer_text'), 11 );
+        add_action( 'pre_get_posts', array($this,'bhaa_ee_add_espresso_events_to_posts'), 10 );
         add_filter(
             'FHEE__EED_WP_Users_Ticket_Selector__maybe_restrict_ticket_option_by_cap__no_access_msg',
-            'bhaa_ee_member_no_access_message',
-            10,
-            4
+            array($this,'bhaa_ee_member_no_access_message'),10,4
         );
     }
 
