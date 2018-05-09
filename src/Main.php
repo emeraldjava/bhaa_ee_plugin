@@ -33,11 +33,24 @@ class Main {
 
     public function run() {
         add_filter( 'admin_footer_text', array($this,'bhaa_ee_remove_footer_text'), 11 );
-        add_action( 'pre_get_posts', array($this,'bhaa_ee_add_espresso_events_to_posts'), 10 );
         add_filter(
             'FHEE__EED_WP_Users_Ticket_Selector__maybe_restrict_ticket_option_by_cap__no_access_msg',
             array($this,'bhaa_ee_member_no_access_message'),10,4
         );
+
+        add_action( 'pre_get_posts', array($this,'bhaa_ee_add_espresso_events_to_posts'), 10 );
+        add_action('AHEE__EED_WP_Users_SPCO__process_wpuser_for_attendee__user_user_created',
+            array($this,'bhaa_ee_user_created'), 10, 4);
+        add_action('AHEE__EED_WP_Users_SPCO__process_wpuser_for_attendee__user_user_updated',
+            array($this,'bhaa_ee_user_updated'), 10, 3);
+    }
+
+    function bhaa_ee_user_created($user, $attendee, $registration, $password) {
+        error_log($user);
+    }
+
+    function bhaa_ee_user_updated($user, $attendee, $registration) {
+        error_log($user);
     }
 
     /**
