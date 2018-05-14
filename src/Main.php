@@ -32,20 +32,51 @@ class Main {
     }
 
     public function run() {
-        add_filter( 'admin_footer_text', array($this,'bhaa_ee_remove_footer_text'), 11 );
+        add_filter('admin_footer_text', array($this,'bhaa_ee_remove_footer_text'), 11 );
         add_filter(
             'FHEE__EED_WP_Users_Ticket_Selector__maybe_restrict_ticket_option_by_cap__no_access_msg',
             array($this,'bhaa_ee_member_no_access_message'),10,4
         );
 
-        add_action( 'pre_get_posts', array($this,'bhaa_ee_add_espresso_events_to_posts'), 10 );
+        add_filter('FHEE__EEM_Question__construct__allowed_question_types',
+            array($this,'bhaa_ee_add_question_type_as_options'), 10, 1 );
+        add_filter('FHEE__EE_SPCO_Reg_Step_Attendee_Information___generate_question_input__default',
+            array($this,'bhaa_ee_generate_question'), 10, 4 );
+
+        add_action('pre_get_posts',
+            array($this,'bhaa_ee_add_espresso_events_to_posts'), 10, 1 );
         add_action('AHEE__EED_WP_Users_SPCO__process_wpuser_for_attendee__user_user_created',
             array($this,'bhaa_ee_user_created'), 10, 4);
         add_action('AHEE__EED_WP_Users_SPCO__process_wpuser_for_attendee__user_user_updated',
             array($this,'bhaa_ee_user_updated'), 10, 3);
     }
 
+    function bhaa_ee_add_question_type_as_options( $question_types ) {
+        $question_types[ 'bhaa_house' ] = __( 'BHAA_House', 'house' );
+        return $question_types;
+    }
+
+    function bhaa_ee_generate_question( $input, $question_type, $question_obj, $options ) {
+        error_log('bhaa_ee_generate_question');
+        if (! $input && $question_type === 'bhaa_house') {
+            require 'CompanyPostTypeInput.php';
+            $options['post_type'] = array('house');
+            $input                = new CompanyPostTypeInput($options);
+        }
+        return $input;
+    }
+
     function bhaa_ee_user_created($user, $attendee, $registration, $password) {
+//        if( $registration instanceof EE_Registration ) {
+//            $debug_info['Registration_ID'] = $registration->ID();
+//        }
+//        if( $user instanceof WP_User ) {
+//            $debug_info['WP_User'] = array(
+//                'User_id' => $user->ID,
+//                'roles' => $user->roles
+//            );
+//        }
+//        error_log(print_r($debug_info, true));
         error_log($user);
     }
 
