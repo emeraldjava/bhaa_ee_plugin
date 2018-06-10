@@ -38,17 +38,23 @@ class Main {
             array($this,'bhaa_ee_member_no_access_message'),10,4
         );
 
-        add_filter('FHEE__EEM_Question__construct__allowed_question_types',
-            array($this,'bhaa_ee_add_question_type_as_options'), 10, 1 );
-        add_filter('FHEE__EE_SPCO_Reg_Step_Attendee_Information___generate_question_input__default',
-            array($this,'bhaa_ee_generate_question'), 10, 4 );
+        //add_filter('FHEE__EEM_Question__construct__allowed_question_types',
+        //    array($this,'bhaa_ee_add_question_type_as_options'), 10, 1 );
+        //add_filter('FHEE__EE_SPCO_Reg_Step_Attendee_Information___generate_question_input__default',
+        //    array($this,'bhaa_ee_generate_question'), 10, 4 );
 
-        add_action('pre_get_posts',
-            array($this,'bhaa_ee_add_espresso_events_to_posts'), 10, 1 );
-        add_action('AHEE__EED_WP_Users_SPCO__process_wpuser_for_attendee__user_user_created',
-            array($this,'bhaa_ee_user_created'), 10, 4);
-        add_action('AHEE__EED_WP_Users_SPCO__process_wpuser_for_attendee__user_user_updated',
-            array($this,'bhaa_ee_user_updated'), 10, 3);
+        add_filter('FHEE__EE_SPCO_Reg_Step_Attendee_Information___generate_question_input__input_constructor_args',
+            array($this,'bhaa_ee_question_input'), 10, 4
+        );
+
+        return apply_filters( 'FHEE__EEM_Answer__get_attendee_question_answer_value__answer_value', $value, $registration, $question_id, $question_system_id );
+
+        //add_action('pre_get_posts',
+        //    array($this,'bhaa_ee_add_espresso_events_to_posts'), 10, 1 );
+        //add_action('AHEE__EED_WP_Users_SPCO__process_wpuser_for_attendee__user_user_created',
+        //    array($this,'bhaa_ee_user_created'), 10, 4);
+        //add_action('AHEE__EED_WP_Users_SPCO__process_wpuser_for_attendee__user_user_updated',
+        //    array($this,'bhaa_ee_user_updated'), 10, 3);
     }
 
     function bhaa_ee_add_question_type_as_options( $question_types ) {
@@ -64,6 +70,11 @@ class Main {
             $input                = new CompanyPostTypeInput($options);
         }
         return $input;
+    }
+
+    function bhaa_ee_question_input($input_args, EE_Registration $registration = null, EE_Question $question = null, EE_Answer $answer = null){
+
+        return $input_args;
     }
 
     function bhaa_ee_user_created($user, $attendee, $registration, $password) {
