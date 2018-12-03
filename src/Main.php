@@ -38,7 +38,7 @@ class Main {
             array($this,'bhaa_ee_member_no_access_message'),10,4
         );
 
-        add_action( 'AHEE__SPCO__reg_form_footer', array($this,'bhaa_jf_change_ee_reg_form_datepicker_format'), 10 );
+       // add_action( 'AHEE__SPCO__reg_form_footer', array($this,'bhaa_jf_change_ee_reg_form_datepicker_format'), 10 );
 
         //add_filter('FHEE__EEM_Question__construct__allowed_question_types',
         //    array($this,'bhaa_ee_add_question_type_as_options'), 10, 1 );
